@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ira/screens/Menu/editprofile.dart';
@@ -14,6 +15,23 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final db = FirebaseFirestore.instance;
+  num? gift = -1;
+  @override
+  void initState() {
+    super.initState();
+    db
+        .collection('users')
+        .doc(widget.prefs.getString('uid'))
+        .get()
+        .then((value) {
+      final data = value.data()!;
+      setState(() {
+        gift = data['gift'];
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -23,7 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
     String? address = widget.prefs.getString('address');
     String? profImg = widget.prefs.getString('profImg');
     String? phone = widget.prefs.getString('phone');
-    num? gift = widget.prefs.getInt('gift');
+    // num? gift = widget.prefs.getInt('gift');
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -83,16 +101,25 @@ class _ProfilePageState extends State<ProfilePage> {
                   leading: Icon(Icons.location_city, size: 30),
                 ),
                 if (type == 'Helper')
-                  ListTile(
-                    title: Text("$gift"),
-                    leading: Icon(Icons.card_giftcard, size: 30),
-                    trailing: Icon(Icons.chevron_right_sharp, size: 30),
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                GiftPage(prefs: widget.prefs))),
-                  ),
+                  if (gift == -1)
+                    ListTile(
+                      title: Container(
+                        child: CircularProgressIndicator(),
+                      ),
+                      leading: Icon(Icons.card_giftcard, size: 30),
+                    ),
+                if (type == 'Helper')
+                  if (gift != -1)
+                    ListTile(
+                      title: Text("$gift"),
+                      leading: Icon(Icons.card_giftcard, size: 30),
+                      trailing: Icon(Icons.chevron_right_sharp, size: 30),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  GiftPage(prefs: widget.prefs))),
+                    ),
                 ListTile(
                   title: Text(" Logout !!!"),
                   leading: Icon(Icons.logout_rounded, size: 30),
