@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "304186818460",
+    "firebase_url": "https://iira-6fc2f-default-rtdb.firebaseio.com",
+    "project_id": "iira-6fc2f",
+    "storage_bucket": "iira-6fc2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304186818460:android:815e16733b477d77059259",
+        "android_client_info": {
+          "package_name": "com.example.ira_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304186818460-vc4h9e3m0or29d04dolpmq1flgmg121m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ira_app",
+            "certificate_hash": "0269474dd05151f628655eabf8a1e401685a47cd"
+          }
+        },
+        {
+          "client_id": "304186818460-cjk2fa6a1hvsv1eorfnb2478rmo8m3v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqW_kJ_HI6LPA_A3kb8cphAo2uCrauwwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "304186818460-cjk2fa6a1hvsv1eorfnb2478rmo8m3v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "304186818460-3a6r7fegoa07glo1l4bqnsrsa6v18t5u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.iraApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,9 @@
+flutter pub upgrade
+flutter pub get
+flutter clean
+flutter build apk --split-per-abi --no-shrink
+flutter install
+
+dart fix --dry-run
+
+flutter run --profile 
