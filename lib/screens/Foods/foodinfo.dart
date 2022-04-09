@@ -41,7 +41,8 @@ class FoodInfo extends StatelessWidget {
               SizedBox(height: 10),
               if (prefs.getString('uid') == val['user'])
                 _Itemqr(encodeData: val['foodID']),
-              if (prefs.getString('uid') != val['user']) _Itemotp(),
+              if (prefs.getString('uid') != val['user'] && !val['transition'])
+                _Itemotp(encodeData: val['foodID'], val: val),
               SizedBox(height: 10),
               if (prefs.getString('uid') != val['user'])
                 _Itemuser(user: val['user']),
@@ -149,7 +150,51 @@ class _Itemqr extends StatelessWidget {
   }
 }
 
-class _Itemotp extends StatelessWidget {
+class _Itemotp extends StatefulWidget {
+  final String encodeData;
+  final Map<String, dynamic> val;
+
+  _Itemotp({Key? key, required this.encodeData, required this.val})
+      : super(key: key);
+
+  @override
+  State<_Itemotp> createState() => _ItemotpState();
+}
+
+class _ItemotpState extends State<_Itemotp> {
+  final TextEditingController _textController = new TextEditingController();
+  final db = FirebaseFirestore.instance;
+  String _result = 'none';
+
+  Future<Null> _sendText(String text) async {
+    _textController.clear();
+    List<int> num = widget.encodeData.codeUnits;
+    String code = '${num[0]}${num[1]}${num[2]}${num[3]}';
+
+    if (text == code) {
+      rewardUser(widget.val);
+      setState(() {
+        _result = 'true';
+      });
+    } else {
+      // print(code);
+      setState(() {
+        _result = 'false';
+      });
+    }
+  }
+
+  IconButton getDefaultSendButton() {
+    return new IconButton(
+      icon: _result == 'true'
+          ? Icon(Icons.check, color: Colors.green)
+          : _result == 'false'
+              ? Icon(Icons.cancel_presentation_sharp, color: Colors.red)
+              : Icon(Icons.send),
+      onPressed: () => _sendText(_textController.text),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -159,25 +204,25 @@ class _Itemotp extends StatelessWidget {
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 8.0),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: Colors.grey[100],
-            ),
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.grey[100]),
             child: new Row(
               children: <Widget>[
                 SizedBox(width: 20),
                 Flexible(
                   child: TextField(
+                    keyboardType: TextInputType.number,
                     style: TextStyle(fontSize: 18, color: Colors.black),
-
+                    controller: _textController,
                     onChanged: (String messageText) {},
-                    // onSubmitted: _sendText,
-                    decoration:
-                        InputDecoration.collapsed(hintText: "Send a message"),
+                    onSubmitted: _sendText,
+                    decoration: InputDecoration.collapsed(
+                        hintText: "Enter Food Unique Code"),
                   ),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                  // child: getDefaultSendButton(),
+                  child: getDefaultSendButton(),
                 ),
               ],
             ),
