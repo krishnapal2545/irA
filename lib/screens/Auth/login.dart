@@ -198,6 +198,7 @@ class _LoginPageState extends State<LoginPage> {
         prefs.setString('address', userData['address']);
         prefs.setString('profImg', userData['profileImg']);
         prefs.setString('phone', userData['phone']);
+        prefs.setInt('gift', userData['gift']);
         prefs.setBool('is_verified', true);
       });
     }

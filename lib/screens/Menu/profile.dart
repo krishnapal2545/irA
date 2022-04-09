@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ira/screens/Menu/editprofile.dart';
 import 'package:ira/screens/Auth/login.dart';
+import 'package:ira/screens/Menu/gift.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -22,6 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
     String? address = widget.prefs.getString('address');
     String? profImg = widget.prefs.getString('profImg');
     String? phone = widget.prefs.getString('phone');
+    num? gift = widget.prefs.getInt('gift');
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -80,6 +82,17 @@ class _ProfilePageState extends State<ProfilePage> {
                   title: Text(address!),
                   leading: Icon(Icons.location_city, size: 30),
                 ),
+                if (type == 'Helper')
+                  ListTile(
+                    title: Text("$gift"),
+                    leading: Icon(Icons.card_giftcard, size: 30),
+                    trailing: Icon(Icons.chevron_right_sharp, size: 30),
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                GiftPage(prefs: widget.prefs))),
+                  ),
                 ListTile(
                   title: Text(" Logout !!!"),
                   leading: Icon(Icons.logout_rounded, size: 30),

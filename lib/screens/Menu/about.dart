@@ -194,22 +194,6 @@ class _TeamImages extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Container(
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(200),
-                          child:
-                              Image.asset('images/maleAvtar.png', width: 200),
-                        ),
-                        SizedBox(height: 10),
-                        Text("Abhay Odam Valapil"),
-                        SizedBox(height: 10),
-                      ],
-                    ),
-                  ),
-                ),
               ],
             )
           ],
