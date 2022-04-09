@@ -21,22 +21,23 @@ class _GiftPageState extends State<GiftPage> {
       body: SafeArea(
         child: ListView(children: [
           Container(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child:
-                          Text("Redeem Points", style: TextStyle(fontSize: 30)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("Get exciting deals from 100+ Top Brands",
-                          style: TextStyle(fontSize: 15)),
-                    )
-                  ])),
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Redeem Points", style: TextStyle(fontSize: 30)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Get exciting deals from 100+ Top Brands",
+                      style: TextStyle(fontSize: 15)),
+                )
+              ],
+            ),
+          ),
         ]),
       ),
     );

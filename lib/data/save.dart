@@ -166,13 +166,18 @@ Future<void> editUserData({
 
 Future<void> rewardUser(Map<String, dynamic> val) async {
   final db = FirebaseFirestore.instance;
-  await db
-      .collection(val['type'])
-      .doc(val['foodID'])
-      .update({'transition': true});
-  db.collection('users').doc(val['user']).get().then((value) {
-    num count = value.data()!['gift'];
-    count = count + val['cost'];
-    db.collection('users').doc(val['user']).update({'gift': count});
+  db.collection(val['type']).doc(val['foodID']).get().then((value) async {
+    final data = value.data()!;
+    if (!data['transition']) {
+      await db
+          .collection(val['type'])
+          .doc(val['foodID'])
+          .update({'transition': true});
+      db.collection('users').doc(val['user']).get().then((value) {
+        num count = value.data()!['gift'];
+        count = count + val['cost'];
+        db.collection('users').doc(val['user']).update({'gift': count});
+      });
+    }
   });
 }
