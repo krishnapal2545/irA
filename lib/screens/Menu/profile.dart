@@ -103,9 +103,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 if (type == 'Helper')
                   if (gift == -1)
                     ListTile(
-                      title: Container(
-                        child: CircularProgressIndicator(),
-                      ),
+                      title: CircularProgressIndicator(),
                       leading: Icon(Icons.card_giftcard, size: 30),
                     ),
                 if (type == 'Helper')
