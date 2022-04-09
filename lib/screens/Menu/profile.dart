@@ -117,8 +117,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  GiftPage(prefs: widget.prefs))),
+                              builder: (context) => GiftPage(gift: gift))),
                     ),
                 ListTile(
                   title: Text(" Logout !!!"),

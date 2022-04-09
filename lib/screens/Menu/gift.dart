@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class GiftPage extends StatefulWidget {
-  final SharedPreferences prefs;
+  final num? gift;
 
-  const GiftPage({Key? key, required this.prefs}) : super(key: key);
+  const GiftPage({Key? key, required this.gift}) : super(key: key);
 
   @override
   State<GiftPage> createState() => _GiftPageState();
@@ -13,7 +12,7 @@ class GiftPage extends StatefulWidget {
 class _GiftPageState extends State<GiftPage> {
   @override
   Widget build(BuildContext context) {
-    num? gift = widget.prefs.getInt('gift');
+    num? gift = widget.gift;
     return Scaffold(
       appBar: AppBar(
         title: Text('$gift pts Cashback Points Balance'),
