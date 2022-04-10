@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'irA',
       theme: ThemeData(primarySwatch: Colors.deepPurple),
-      // home: FirstPage(),
       home: _checkUser(),
     );
   }
