@@ -1,10 +1,4 @@
 # irA - FoodDonation App
-## Developers
-### -> Krishnakumar Pal
-### -> Amit Patil
-### -> Riya Thakkar
-
-
 
 ![alt text](https://github.com/krishnapal2545/irrA/blob/master/ScreenShot/0.1.png?raw=true)
 
