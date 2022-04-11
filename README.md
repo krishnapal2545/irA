@@ -44,14 +44,3 @@
 
 ### Contact Page
 ![alt text](https://github.com/krishnapal2545/irrA/blob/master/ScreenShot/5.3.jpg?raw=true)
-
-
-
-
-
-
-
-
-
-
-
